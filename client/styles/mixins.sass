@@ -1,0 +1,21 @@
+@import 'colors'
+
+=view($height: 100%, $width: 100%)
+  height: $height
+  width: $width
+
+=input($color: $black, $background: $white)
+  padding: 10px
+  border: 1px solid $transparent
+  background: $background
+  color: $color
+  &.error
+    border: 1px solid $red
+
+=button($color: $white, $background: $lightgrey)
+  padding: 10px 15px
+  border: 1px solid $transparent
+  background: $background
+  color: $color
+  cursor: pointer
+  box-shadow: 0 0 2px solid rgba(0, 0, 0, .5)

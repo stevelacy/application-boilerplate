@@ -1,0 +1,23 @@
+@import 'client/styles/mixins'
+
+.login-view
+  +view()
+  display: flex
+  justify-content: center
+  align-items: center
+  .login-form
+    display: flex
+    max-width: 450px
+    flex-direction: column
+    background: $accentDark
+    padding: 30px 40px
+    .title
+      margin: 0 auto 10px
+    .input
+      +input()
+      flex: 1
+      margin: 10px
+    .button
+      +button($background: $teal)
+      margin: 10px auto
+
