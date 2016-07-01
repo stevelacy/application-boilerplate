@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "main": "api/index.js",
   "scripts": {
+    "test": "NODE_ENV=testing mocha --compilers js:babel-core/register test/index.js 'test/**/*.js'",
     "lint": "eslint . ./",
     "lint:fix": "npm run lint -- --fix",
     "repl": "DEBUG=app:* NODE_ENV=$NODE_ENV node bin/repl",
@@ -80,6 +81,7 @@
     "immutable": "^3.7.6",
     "isparta-loader": "^2.0.0",
     "json-loader": "^0.5.4",
+    "mocha": "^2.5.3",
     "node-sass": "^3.8.0",
     "nodemon": "^1.9.1",
     "normalizr": "^2.0.0",
@@ -102,6 +104,7 @@
     "shasta-data-view": "shastajs/shasta-data-view",
     "shasta-logger": "^2.0.0",
     "shasta-router": "shastajs/shasta-router",
+    "should": "^9.0.2",
     "style-loader": "^0.13.0",
     "supertest": "^1.2.0",
     "tahoe": "shastajs/tahoe#new",

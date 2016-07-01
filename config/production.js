@@ -25,10 +25,6 @@ const config = {
   },
 
   // auth stuff
-  github: {
-    id: 'get-your-own',
-    secret: 'get-your-own'
-  },
   facebook: {
     id: 'get-your-own',
     secret: 'get-your-own',
@@ -38,14 +34,6 @@ const config = {
       'user_about_me',
       'user_birthday',
       'user_location'
-    ]
-  },
-
-  google: {
-    id: 'get-your-own',
-    secret: 'get-your-own',
-    scope: [
-      'profile'
     ]
   }
 }

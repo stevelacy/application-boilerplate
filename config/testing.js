@@ -7,14 +7,13 @@ export default {
   },
 
   // databases
-  redis: 'redis://localhost/2',
+  redis: 'redis://localhost/3',
   rethink: {
     silent: true,
     host: 'localhost',
     port: 28015,
-    db: 'otr_local',
+    db: 'otr_test',
     enforce_extra: 'remove'
   },
 
-  // auth stuff
 }
