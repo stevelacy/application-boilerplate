@@ -68,8 +68,18 @@ const strategy = new Strategy({
 }, findUser)
 passport.use(strategy)
 
-const start = passport.authenticate(providerName)
 const router = Router({ mergeParams: true })
-router.post(`/auth/${providerName}/start`, redirect.pre, start, redirect.postBody)
+router.post(`/auth/${providerName}/start`, redirect.pre, (req, res, next) => {
+  passport.authenticate(providerName, (err, user, info) => {
+    if (err) return next(err)
+    if (!user) {
+      return res.status(info.status || 400).send(info.message)
+    }
+    req.logIn(user, (err) => {
+      if (err) return next(err)
+      return res.status(200).send({me: user})
+    })
+  })(req, res, next)
+}, redirect.postBody)
 
 export default router
