@@ -5,6 +5,7 @@ export const isAuthorized = ({ user, id }) =>
   Model.authorized('update', user, { id })
 
 export const process = ({ user, id, data }) => {
+  if (!data.id) data.id = id
   const change = Model.screen('write', user, data)
   return Model.get(id).update(change, { returnChanges: true }).run()
 }

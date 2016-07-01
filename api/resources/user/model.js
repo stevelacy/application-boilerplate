@@ -20,18 +20,6 @@ const Model = rethink.createModel('User', {
   failedLogins: type.number().default(0),
 
   // auth info
-  facebook: {
-    id: type.string(),
-    accessToken: type.string()
-  },
-  google: {
-    id: type.string(),
-    accessToken: type.string()
-  },
-  github: {
-    id: type.string(),
-    accessToken: type.string()
-  },
   local: {
     id: type.string(),
     accessToken: type.string()
@@ -53,7 +41,7 @@ Model.ready().then(() => {
 palisade(Model, {
   document: {
     read: [ 'admin', 'self' ],
-    list: [ 'amdin', 'self' ],
+    list: [ 'admin', 'self' ],
     create: [ 'admin' ],
     update: [ 'admin', 'self' ],
     replace: [ 'admin' ],
