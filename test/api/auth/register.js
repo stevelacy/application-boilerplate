@@ -1,11 +1,10 @@
 import should from 'should'
 import test from 'supertest'
 import api from '../../../api'
-import mockUser from '../../mocks/user'
+import { user as mockUser } from '../../mocks/users'
 import User from '../../../api/resources/user/model'
 
-
-describe('register', () => {
+describe('auth:register', () => {
   before((done) => {
     User.insert(new User(mockUser)).execute(done)
   })

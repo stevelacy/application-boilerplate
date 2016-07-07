@@ -24,7 +24,7 @@ describe('user:updateById', function () {
   it('return 401 on another user', (done) => {
     userInstance
       .patch('/v1/users/124')
-      .send({name: 'wow'})
+      .send({first: 'wow'})
       .expect(401)
       .end((err, res) => {
         should.not.exist(err)
@@ -34,12 +34,12 @@ describe('user:updateById', function () {
   it('return 200 and update self', (done) => {
     userInstance
       .patch('/v1/users/123')
-      .send({name: 'tubular', email: 'update@email.co'})
+      .send({first: 'tubular', email: 'update@email.co'})
       .expect(200)
       .end((err, res) => {
         should.not.exist(err)
         should.equal(res.body.id, 123)
-        should.equal(res.body.name, 'tubular')
+        should.equal(res.body.first, 'tubular')
         should.equal(res.body.email, 'update@email.co')
         should.not.exist(res.body.local)
         should.not.exist(res.body.password)
@@ -50,12 +50,12 @@ describe('user:updateById', function () {
   it('return 200 and update if user.role is admin', (done) => {
     adminInstance
       .patch('/v1/users/123')
-      .send({name: 'wat'})
+      .send({first: 'wat'})
       .expect(200)
       .end((err, res) => {
         should.not.exist(err)
         should.exist(res.body)
-        should.equal(res.body.name, 'wat')
+        should.equal(res.body.first, 'wat')
         done()
       })
   })
