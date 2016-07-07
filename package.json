@@ -40,7 +40,6 @@
     "connect-redis": "^3.0.2",
     "cookie-parser": "^1.4.1",
     "debug": "^2.2.0",
-    "errorhandler": "^1.4.2",
     "escape-string-regexp": "^1.0.5",
     "express": "^4.13.3",
     "express-session": "^1.13.0",
@@ -59,7 +58,7 @@
     "socket.io": "^1.4.6",
     "socket.io-client": "^1.4.6",
     "superagent": "^1.7.1",
-    "sutro": "stevelacy/sutro",
+    "sutro": "shastajs/sutro",
     "thinky": "^2.2.4"
   },
   "devDependencies": {
@@ -91,6 +90,7 @@
     "react-addons-pure-render-mixin": "^15.1.0",
     "react-document-meta": "^2.0.2",
     "react-dom": "^15.0.0",
+    "react-fa": "^4.1.2",
     "react-redux": "^4.4.5",
     "react-transform-catch-errors": "^1.0.0",
     "react-transform-hmr": "^1.0.0",
@@ -148,7 +148,6 @@
     },
     "rules": {
       "react/display-name": 1,
-      "react/forbid-prop-types": 1,
       "react/jsx-boolean-value": 1,
       "react/jsx-curly-spacing": 1,
       "react/jsx-equals-spacing": 1,
