@@ -31,7 +31,7 @@ const router = Router({ mergeParams: true })
 passport.serializeUser(userToId)
 passport.deserializeUser(getUserById)
 
-router.get('/auth/logout', (req, res) => {
+router.all('/auth/logout', (req, res) => {
   req.logout()
   res.redirect('/')
 })

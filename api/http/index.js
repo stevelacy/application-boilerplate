@@ -9,11 +9,11 @@ const app = express()
 app.disable('x-powered-by')
 
 // middleware stack
-app.use(require('./middleware/errors'))
 app.use(require('./middleware/formatting'))
 app.use(require('./middleware/session'))
 app.use(require('./middleware/auth'))
 app.use(config.api.path, require('./middleware/api'))
+app.use(require('./middleware/errors'))
 
 // final piece - serve static content
 app.use(require('./middleware/spa'))

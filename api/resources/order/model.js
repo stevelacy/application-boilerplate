@@ -20,6 +20,7 @@ const Model = rethink.createModel('Order', {
 
 Model.ensureIndex('created')
 Model.ensureIndex('status')
+Model.ensureIndex('userId')
 
 Model.ready().then(() => {
   // import and set up relationships here
@@ -30,23 +31,24 @@ palisade(Model, {
   document: {
     read: [ 'admin', isOwner ],
     list: [ 'admin', 'loggedIn' ],
-    create: [ 'admin', isOwner ],
+    create: [ 'admin', 'loggedIn' ],
     update: [ 'admin', isOwner],
     replace: [ 'admin' ],
     delete: [ 'admin' ]
   },
   read: {
     id: [ 'admin', isOwner],
+    userId: [ 'admin', isOwner],
     created: [ 'admin', isOwner],
     status: [ 'admin', isOwner],
     products: ['admin', isOwner ],
     date: [ 'admin', isOwner],
     first: [ 'admin' ],
-    paid: [ 'admin', 'self' ],
-    wash: [ 'admin', 'self' ],
-    user: [ 'admin', 'self' ],
-    lastModified: [ 'admin', 'self' ],
-    lastLogin: [ 'admin', 'self' ]
+    paid: [ 'admin' ],
+    wash: [ 'admin' ],
+    user: [ 'admin' ],
+    lastModified: [ 'admin' ],
+    lastLogin: [ 'admin' ]
   },
   write: {
     status: [ 'admin' ],
