@@ -3,7 +3,7 @@ require('app-module-path/register')
 var pmx = require('pmx').init()
 var config = require('app-config-chain')
 var server = require('./http')
-var debug = require('lib/debug')
+var debug = require('lib/debug').default
 var chalk = require('chalk')
 
 process.on('warning', (warning) => {

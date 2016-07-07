@@ -42,10 +42,7 @@ describe('order:create', function () {
       .send({
       })
       .expect(400)
-      .end((err, res) => {
-        console.log(err, res.text)
-        done()
-      })
+      .end(done)
   })
 
   it('create an order with products', (done) => {
