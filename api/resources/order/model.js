@@ -1,7 +1,8 @@
 import rethink from 'connections/rethink'
 import palisade from 'palisade'
-import User from '../user/model'
 import isOwner from 'lib/isOwner'
+import User from '../user/model'
+import Product from '../product/model'
 const { type } = rethink
 
 const Model = rethink.createModel('Order', {
@@ -24,6 +25,7 @@ Model.ensureIndex('userId')
 
 Model.ready().then(() => {
   // import and set up relationships here
+  Model.hasAndBelongsToMany(Product, 'products', 'id', 'id')
   Model.belongsTo(User, 'user', 'userId', 'id')
 })
 

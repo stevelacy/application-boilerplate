@@ -26,7 +26,8 @@ const Model = rethink.createModel('User', {
   },
 
   // user info
-  name: type.string(),
+  first: type.string(),
+  last: type.string(),
   email: type.string().email(),
   location: type.string()
 })
@@ -55,6 +56,8 @@ palisade(Model, {
     created: [ 'admin', 'self' ],
     lastModified: [ 'admin', 'self' ],
     lastLogin: [ 'admin', 'self' ],
+    first: [ 'admin', 'self' ],
+    last: [ 'admin', 'self' ],
     email: [ 'admin', 'self' ]
   },
   write: {
@@ -62,6 +65,8 @@ palisade(Model, {
     name: [ 'admin', 'self' ],
     email: [ 'admin', 'self' ],
     location: [ 'admin', 'self' ],
+    first: [ 'admin', 'self' ],
+    last: [ 'admin', 'self' ]
   }
 })
 
