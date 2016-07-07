@@ -36,7 +36,7 @@ describe('order:create', function () {
       })
   })
 
-  it.skip('return 400 if parameters are missing', (done) => {
+  it('return 400 if parameters are missing', (done) => {
     userInstance
       .post('/v1/orders')
       .send({

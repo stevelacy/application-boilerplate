@@ -14,3 +14,12 @@ export const productSource = {
   image: 'http://imageurl.wat'
 }
 
+export const productCategory = {
+  id: '191919',
+  name: 'shorts',
+  category: 'super category',
+  description: 'if needed',
+  sizes: ['S', 'M'],
+  created: Date.now()
+}
+
