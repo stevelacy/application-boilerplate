@@ -1,8 +1,8 @@
 import React from 'react'
 import { PropTypes, connect } from 'shasta'
-// import classes from 'classnames'
 import DataComponent from 'shasta-data-view'
 import actions from 'core/actions'
+import config from 'config'
 import Title from 'components/Title'
 
 @connect({
@@ -16,10 +16,19 @@ export default class AdminUsersComponent extends DataComponent {
     users: PropTypes.list
   }
 
+  componentDidMount () {
+    this.refetch = setInterval(() => {
+      this.resolveData()
+    }, config.intervals.FETCH_USERS)
+  }
+
+  componentWillUnmount () {
+    clearInterval(this.refetch)
+  }
+
   resolveData () {
     actions.api.users.find({
-      subset: 'users',
-      tail: true
+      subset: 'users'
     })
   }
 

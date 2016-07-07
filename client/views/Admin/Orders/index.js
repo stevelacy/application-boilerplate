@@ -3,6 +3,7 @@ import { PropTypes, connect } from 'shasta'
 // import classes from 'classnames'
 import DataComponent from 'shasta-data-view'
 import actions from 'core/actions'
+import config from 'config'
 import Title from 'components/Title'
 
 @connect({
@@ -16,10 +17,19 @@ export default class AdminOrdersComponent extends DataComponent {
     orders: PropTypes.list
   }
 
+  componentDidMount () {
+    this.refetch = setInterval(() => {
+      this.resolveData()
+    }, config.intervals.FETCH_ORDERS)
+  }
+
+  componentWillUnmount () {
+    clearInterval(this.refetch)
+  }
+
   resolveData () {
     actions.api.orders.find({
-      subset: 'orders',
-      tail: true
+      subset: 'orders'
     })
   }
 

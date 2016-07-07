@@ -4,19 +4,17 @@ import rethink from 'connections/rethink'
 import Model from './model'
 import changeStream from 'rethinkdb-change-stream'
 
-export const tailable = true
+export const tailable = false
 export const isAuthorized = ({ user }) =>
   Model.authorized('list', user)
 
-export const process = ({ options, tail }) => {
+export const process = ({ options }) => {
   const joins = {
     user: true,
     products: true
   }
   const query = Model.orderBy({index: rethink.r.asc('created')})
-  return tail
-    ? changeStream(query.changes({ includeInitial: true }))
-    : query.getJoin(joins).execute()
+  return query.getJoin(joins).execute()
 }
 
 export const format = ({ user }, data) =>
