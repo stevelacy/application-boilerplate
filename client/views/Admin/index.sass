@@ -1,0 +1,23 @@
+@import 'client/styles/colors'
+@import './itemlist.sass'
+
+.admin-view
+  height: 100%
+  width: 100%
+  background: $lightestgrey
+  display: flex
+  .content-pane
+    width: calc(100% - 250px)
+    padding: 10px
+    .block
+      padding: 10px
+      border-radius: 3px
+      box-shadow: 0 1px 3px rgba(10, 10, 10, .2)
+      background: $white
+    .block, .block .title-component
+      color: $black
+    .hr
+      height: 1px
+      width: 100%
+      background: $lightgrey
+      margin: 5px 0

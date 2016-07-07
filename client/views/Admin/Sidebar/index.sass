@@ -1,0 +1,39 @@
+@import 'client/styles/colors'
+@import 'client/styles/mixins'
+
+.sidebar-component
+  width: 250px
+  height: 100%
+  background: $bg
+  text-align: center
+  position: relative
+  .header
+    padding: 20px
+    height: 60px
+    background: $accentDark
+  .footer
+    position: absolute
+    bottom: 0
+    left: 0
+    right: 0
+    .button
+      +button($background: $transparent)
+      width: 100%
+      &:hover
+        background: rgba($accent, .2)
+  .list-items-component
+    a
+      text-decoration: none
+      .list-item
+        padding: 10px
+        border-right: 5px solid $transparent
+        font-size: 1.3rem
+        text-transform: uppercase
+        transition: all .3s
+        border-bottom: 1px solid rgba($accent, .1)
+        &:hover
+          background: rgba($accent, .4)
+          color: $white
+      &.active
+        .list-item
+          border-right: 5px solid $accent
