@@ -10,7 +10,8 @@ before((done) => {
   const tables = [
     'User',
     'Order',
-    'Product'
+    'Product',
+    'ProductSource'
   ]
   async.each(tables, (table, cb) => {
     thinky.r.table(table).delete().run(cb)

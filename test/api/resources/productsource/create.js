@@ -1,10 +1,11 @@
 import should from 'should'
 import test from 'supertest'
 import api from '../../../../api'
-import { user as mockUser } from '../../../mocks/users'
-import { admin as mockAdmin } from '../../../mocks/users'
-import { productSource as mockProduct } from '../../../mocks/products'
-import { productCategory as mockCategory } from '../../../mocks/products'
+import { admin as mockAdmin, user as mockUser } from '../../../mocks/users'
+import {
+  productSource as mockProduct,
+  productCategory as mockCategory
+} from '../../../mocks/products'
 import User from '../../../../api/resources/user/model'
 import ProductSource from '../../../../api/resources/productsource/model'
 import ProductCategory from '../../../../api/resources/productcategory/model'
@@ -18,24 +19,22 @@ describe('productsource:create', function () {
   }
 
   before((done) => {
-    User.insert(new User(mockUser)).execute(() => {
-      User.insert(new User(mockAdmin)).execute(() => {
-        ProductSource
-          .insert(new ProductSource(mockProduct))
-          .execute((err, res) => {
-            ProductCategory
-              .insert(new ProductCategory(mockCategory))
-              .execute((err, res) => {
-                userInstance
-                  .post('/auth/local/start')
-                  .send({email: mockUser.email, password: mockUser.password})
-                  .end(() => {
-                    adminInstance
-                      .post('/auth/local/start')
-                      .send({email: mockAdmin.email, password: mockAdmin.password})
-                      .end(done)
-                  })
-          })
+    User.insert([new User(mockUser), new User(mockAdmin)]).execute(() => {
+      ProductSource
+        .insert(new ProductSource(mockProduct))
+        .execute((err, res) => {
+          ProductCategory
+            .insert(new ProductCategory(mockCategory))
+            .execute((err, res) => {
+              userInstance
+                .post('/auth/local/start')
+                .send({email: mockUser.email, password: mockUser.password})
+                .end(() => {
+                  adminInstance
+                    .post('/auth/local/start')
+                    .send({email: mockAdmin.email, password: mockAdmin.password})
+                    .end(done)
+                })
         })
       })
     })
