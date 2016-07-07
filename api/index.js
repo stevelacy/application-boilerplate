@@ -25,7 +25,7 @@ process.on('uncaughtException', (err) => {
 
 function init () {
   server.listen(config.http.port, config.http.host, () =>
-    debug(`Server started on: ${[config.http.host, config.http.port]}`)
+    debug(`Server started on: ${config.http.host}:${config.http.port}`)
   )
 }
 if (!module.parent) {
