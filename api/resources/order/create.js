@@ -18,13 +18,7 @@ export const process = ({user, data}, next) => {
 
   let products = []
 
-  return new Promise((resolve, rej) => {
-    const reject = (e, r, d) => {
-      if (e) console.error(e)
-      // handle error
-      return rej(e, r, d)
-    }
-
+  return new Promise((resolve, reject) => {
     async.each(data.products, (product, cb) => {
       product.sourceId = product.id
       delete product.id

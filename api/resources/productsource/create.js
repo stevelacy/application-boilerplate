@@ -1,3 +1,4 @@
+import { screenDeep } from 'palisade'
 import Model from './model'
 import Category from '../productcategory/model'
 
@@ -11,11 +12,7 @@ export const process = ({ user, data }, cb) => {
   delete data.categoryId
   let model = new Model(data)
   model.categoryId = categoryId
-  return new Promise((resolve, rej) => {
-    let reject = (e, r, d) => {
-      console.log(e, r, d)
-      rej(e, r, d)
-    }
+  return new Promise((resolve, reject) => {
     model.saveAll().then((res) => {
       Category.get(categoryId).getJoin({products: true}).run().then((doc) => {
         doc.products.push(res)
@@ -26,3 +23,6 @@ export const process = ({ user, data }, cb) => {
     }).error(reject)
   })
 }
+
+export const format = ({ user }, data) =>
+  screenDeep(user, data)
