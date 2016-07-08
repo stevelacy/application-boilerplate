@@ -10,6 +10,7 @@ before((done) => {
   const tables = [
     'User',
     'Order',
+    'Order_Product',
     'Product',
     'ProductSource'
   ]

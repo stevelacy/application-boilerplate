@@ -8,12 +8,15 @@ export const tailable = false
 export const isAuthorized = ({ user }) =>
   Model.authorized('list', user)
 
-export const process = ({ options }) => {
+export const process = ({ user, options }) => {
   const joins = {
     user: true,
     products: true
   }
-  const query = Model.orderBy({index: rethink.r.asc('created')})
+  let query = Model.orderBy({index: rethink.r.asc('created')})
+  if (user.role !== 'admin') {
+    query = query.filter({userId: user.id})
+  }
   return query.getJoin(joins).execute()
 }
 

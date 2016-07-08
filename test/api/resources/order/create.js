@@ -57,9 +57,9 @@ describe('order:create', function () {
         should.exist(body.id)
         Order.get(body.id).getJoin().execute((err, res) => {
           should.exist(body.products)
-          should(body.products[0].id === mockProduct.id)
-          // should.exist(body.user)
-          // should.exist(body.user.id)
+          should(res.products[0].id === mockProduct.id)
+          should.exist(res.user)
+          should.exist(res.user.id)
           done()
         })
       })

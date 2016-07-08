@@ -11,8 +11,14 @@ const Model = rethink.createModel('Product', {
   created: type.date().default(Date.now),
   lastModified: type.date().default(Date.now),
   // data fields
+  name: type.string(),
+  gender: type.string(),
+  image: type.string(),
+  activity: type.string(),
+  description: type.string(),
   sku: type.string(),
-  uid: type.string()
+  uid: type.string(),
+  sourceId: type.string()
 })
 
 Model.ensureIndex('created')

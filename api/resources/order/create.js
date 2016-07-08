@@ -26,12 +26,16 @@ export const process = ({user, data}, next) => {
     }
 
     async.each(data.products, (product, cb) => {
+      product.sourceId = product.id
+      delete product.id
       products.push(new Product(product))
       return cb()
     }, (err) => {
       order.products = products
-      order.saveAll({}, {returnChanges: true}).then(resolve)
-      .error(reject)
+      order
+        .saveAll({products: true}, {returnChanges: true})
+        .then(resolve)
+        .error(reject)
     })
   })
 }
