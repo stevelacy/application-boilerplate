@@ -11,7 +11,7 @@ import ProductSource from '../../../../api/resources/productsource/model'
 import ProductCategory from '../../../../api/resources/productcategory/model'
 
 
-describe('productsource:create', function () {
+describe.only('productsource:create', function () {
   let userInstance = test.agent(api)
   let adminInstance = test.agent(api)
   const opts = {
@@ -20,11 +20,12 @@ describe('productsource:create', function () {
 
   before((done) => {
     User.insert([new User(mockUser), new User(mockAdmin)]).execute(() => {
-      ProductSource
-        .insert(new ProductSource(mockProduct))
+      ProductCategory
+        .insert(new ProductCategory(mockCategory))
         .execute((err, res) => {
-          ProductCategory
-            .insert(new ProductCategory(mockCategory))
+          mockProduct.categoryId = mockCategory.id
+          ProductSource
+            .insert(new ProductSource(mockProduct))
             .execute((err, res) => {
               userInstance
                 .post('/auth/local/start')
@@ -76,12 +77,11 @@ describe('productsource:create', function () {
       .end(done)
   })
 
-  it.skip('create an product source if user.role is admin', (done) => {
+  it('create an product source if user.role is admin', (done) => {
     adminInstance
       .post(opts.url)
       .send({
         image: 'wat.jpg',
-        category: 'wat',
         description: 'product',
         sizes: ['W', 'A', 'T'],
         categoryId: mockCategory.id

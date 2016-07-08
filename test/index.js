@@ -12,7 +12,8 @@ before((done) => {
     'Order',
     'Order_Product',
     'Product',
-    'ProductSource'
+    'ProductSource',
+    'ProductCategory'
   ]
   async.each(tables, (table, cb) => {
     thinky.r.table(table).delete().run(cb)

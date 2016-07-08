@@ -15,8 +15,7 @@ const Model = rethink.createModel('ProductSource', {
   image: type.string(),
   activity: type.string(),
   description: type.string(),
-  sku: type.string(),
-  categoryId: type.string()
+  sku: type.string()
 })
 
 Model.ensureIndex('created')

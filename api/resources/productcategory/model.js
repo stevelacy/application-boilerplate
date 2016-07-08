@@ -8,22 +8,18 @@ const { type } = rethink
 const Model = rethink.createModel('ProductCategory', {
   // core fields
   id: type.string(),
-  created: type.date().default(Date.now),
-  lastModified: type.date().default(Date.now),
-  // data fields
+  created: type.date().default(Date.now).required(),
   name: type.string(),
   description: type.string(),
   category: type.string(),
   sizes: type.array().default(['XS', 'S', 'M', 'L', 'XL', 'XXL'])
 })
 
-Model.ensureIndex('created')
-
 Model.ready().then(() => {
   Model.ensureIndex('created')
-  Model.hasMany(ProductSource, 'products', 'id', 'categoryId')
+  const Product = require('../productsource/model')
+  Model.hasMany(Product, 'products', 'id', 'categoryId')
 })
-
 
 palisade(Model, {
   document: {
