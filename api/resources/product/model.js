@@ -41,14 +41,15 @@ palisade(Model, {
     id: [ 'admin', isOwner],
     created: [ 'admin' ],
     status: [ 'admin', 'loggedIn' ],
-    products: ['admin', 'loggedIn' ],
+    description: ['admin', 'loggedIn' ],
     lastModified: [ 'admin' ],
     sku: [ 'admin' ],
     uid: [ 'admin' ]
   },
   write: {
     status: [ 'admin' ],
-    products: [ 'admin', isOwner ],
+    gender: [ 'admin' ],
+    description: [ 'admin' ],
     sku: [ 'admin' ],
     uid: [ 'admin' ]
   }

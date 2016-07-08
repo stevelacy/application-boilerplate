@@ -3,11 +3,6 @@ import changeStream from 'rethinkdb-change-stream'
 import rethink from '../../connections/rethink'
 import Model from './model'
 
-
-
-// NO AUTH
-//
-//
 export const tailable = true
 export const isAuthorized = () => true
 
