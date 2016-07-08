@@ -11,11 +11,10 @@ export default class AdminView extends Component {
   static displayName = 'AdminView'
   static propTypes = {
     me: PropTypes.map.isRequired,
-    children: PropTypes.node
+    children: PropTypes.node,
+    location: PropTypes.object
   }
-  static defaultState = {
-    OrderData: []
-  }
+
   static contextTypes = {
     router: PropTypes.object
   }
@@ -24,6 +23,8 @@ export default class AdminView extends Component {
     if (!this.props.me.get('id') || this.props.me.get('role') !== 'admin') {
       return this.context.router.push('/account')
     }
+    if (this.props.location.pathname === 'admin')
+      this.context.router.push('/admin/orders')
   }
 
   render() {

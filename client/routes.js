@@ -11,6 +11,7 @@ import AccountOrdersView from 'views/Account/Orders'
 import AdminView from 'views/Admin'
 import AdminOrdersView from 'views/Admin/Orders'
 import AdminUsersView from 'views/Admin/Users'
+import AdminProductsView from 'views/Admin/Products'
 
 const routes = (
   <Route path='/'>
@@ -21,6 +22,7 @@ const routes = (
     <Route path='admin' component={AdminView}>
       <Route path='orders' component={AdminOrdersView} />
       <Route path='users' component={AdminUsersView} />
+      <Route path='products' component={AdminProductsView} />
       <Route path='*' component={NotFoundView} />
     </Route>
     <Route path='*' component={NotFoundView} />

@@ -36,6 +36,10 @@ export default class SidebarView extends Component {
           {
             to: '/admin/users',
             name: 'Users'
+          },
+          {
+            to: '/admin/products',
+            name: 'Products'
           }
         ]} />
         <div className='footer'>
