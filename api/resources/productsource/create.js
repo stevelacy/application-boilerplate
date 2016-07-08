@@ -11,10 +11,18 @@ export const process = ({ user, data }, cb) => {
   delete data.categoryId
   let model = new Model(data)
   model.categoryId = categoryId
-  return model.saveAll().then((res) => {
-    return Category.get(categoryId).getJoin({products: true}).run().then((doc) => {
-      doc.products.push(res)
-      return doc.saveAll({products: true})
-    })
+  return new Promise((resolve, rej) => {
+    let reject = (e, r, d) => {
+      console.log(e, r, d)
+      rej(e, r, d)
+    }
+    model.saveAll().then((res) => {
+      Category.get(categoryId).getJoin({products: true}).run().then((doc) => {
+        doc.products.push(res)
+        doc.saveAll({products: true})
+          .then(() => resolve(res))
+          .error(reject)
+      })
+    }).error(reject)
   })
 }

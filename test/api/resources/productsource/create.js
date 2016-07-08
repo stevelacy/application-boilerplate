@@ -11,7 +11,7 @@ import ProductSource from '../../../../api/resources/productsource/model'
 import ProductCategory from '../../../../api/resources/productcategory/model'
 
 
-describe.only('productsource:create', function () {
+describe('productsource:create', function () {
   let userInstance = test.agent(api)
   let adminInstance = test.agent(api)
   const opts = {
@@ -88,8 +88,6 @@ describe.only('productsource:create', function () {
       })
       .expect(201)
       .end((err, {body}) => {
-        console.log(err, body)
-        return done()
         should.exist(body)
         should.exist(body.id)
         ProductSource.get(body.id).execute((err, res) => {
