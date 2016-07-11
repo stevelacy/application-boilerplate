@@ -24,8 +24,11 @@ export default class UserItem extends Component {
     this.setState({item: this.props.item})
   }
 
-  componentWillReceiveProps (props) {
-    this.setState({item: props.item})
+  componentWillReceiveProps ({ item }) {
+    if (this.state.item.get('active')) {
+      item = item.set('active', true)
+    }
+    this.setState({ item })
   }
 
   saveItem () {
