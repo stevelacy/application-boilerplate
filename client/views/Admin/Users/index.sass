@@ -6,6 +6,8 @@
   .list-item
     display: flex
     flex: 1
+    transition: all .2s
+    overflow: hidden
     &:nth-child(odd)
       background: rgba($lightgrey, .3)
     .input
@@ -15,6 +17,7 @@
       display: inline-block
       height: 40px
       border-right: 1px solid $lightgrey
+      border-bottom: 1px solid $lightgrey
       &.narrow
         flex: 0
       &.header

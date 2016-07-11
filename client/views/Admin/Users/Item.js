@@ -2,6 +2,7 @@ import React from 'react'
 import { PropTypes, Component } from 'shasta'
 import actions from 'core/actions'
 import classes from 'classnames'
+import { Icon } from 'react-fa'
 import { Map } from 'immutable'
 import './index.sass'
 
@@ -21,6 +22,10 @@ export default class UserItem extends Component {
 
   componentWillMount () {
     this.setState({item: this.props.item})
+  }
+
+  componentWillReceiveProps (props) {
+    this.setState({item: props.item})
   }
 
   saveItem () {
@@ -65,12 +70,16 @@ export default class UserItem extends Component {
     const { item } = this.state
     return (
       <div
-        onClick={() => this.props.toggleActiveItem(item)}
         style={{
           height: item.get('active') ? this.props.activeElementHeight :
             this.props.elementHeight
         }}
         className='list-item'>
+        <button
+          onClick={() => this.props.toggleActiveItem(item)}
+          className='button row blue narrow'>
+          <Icon name='expand' />
+          </button>
         <input
           name='first'
           defaultValue={item.get('first')}

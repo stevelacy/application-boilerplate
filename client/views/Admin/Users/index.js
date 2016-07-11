@@ -75,6 +75,7 @@ export default class AdminUsersComponent extends DataComponent {
       <Title> Users </Title>
       <div className='hr' />
       <div className='list-item'>
+        <div className='row header narrow'> expand </div>
         <div className='row header'> first </div>
         <div className='row header'> last </div>
         <div className='row header'> phone </div>
