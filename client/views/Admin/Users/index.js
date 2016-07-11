@@ -32,6 +32,9 @@ export default class AdminUsersComponent extends DataComponent {
   }
 
   componentDidMount () {
+    if (this.props.users) {
+      this.setState({items: this.props.users})
+    }
     this.refetch = setInterval(() => {
       this.resolveData()
     }, config.intervals.FETCH_USERS)
@@ -75,7 +78,8 @@ export default class AdminUsersComponent extends DataComponent {
         <div className='row header'> first </div>
         <div className='row header'> last </div>
         <div className='row header'> phone </div>
-        <div className='row header'> save </div>
+        <div className='row header narrow'> save </div>
+        <div className='row header narrow'> delete </div>
       </div>
 
       <InfiniteScroll

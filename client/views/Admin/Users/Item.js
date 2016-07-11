@@ -56,6 +56,11 @@ export default class UserItem extends Component {
     this.setState(obj)
   }
 
+  handleKeyDown (e) {
+    if (e.keyCode !== 13) return
+    this.saveItem()
+  }
+
   render () {
     const { item } = this.state
     return (
@@ -70,24 +75,35 @@ export default class UserItem extends Component {
           name='first'
           defaultValue={item.get('first')}
           onChange={this.handleInput}
+          onKeyDown={this.handleKeyDown}
           className='row input' />
-
         <input
           name='last'
           defaultValue={item.get('last')}
           onChange={this.handleInput}
+          onKeyDown={this.handleKeyDown}
+          className='row input' />
+        <input
+          name='phone'
+          defaultValue={item.get('phone')}
+          onChange={this.handleInput}
+          onKeyDown={this.handleKeyDown}
           className='row input' />
 
-        <div className='row'>
-          {item.get('phone')}
-        </div>
-        <div className='row'>
+        <div className='row narrow'>
           <button
             className={classes('button blue', {
               green: this.state.dirty
             })}
-            onClick={() => this.saveItem()}>
+            onClick={this.saveItem}>
             save
+            </button>
+        </div>
+        <div className='row narrow'>
+          <button
+            className={classes('button red')}
+            onClick={this.deleteItem}>
+            X
             </button>
         </div>
       </div>
