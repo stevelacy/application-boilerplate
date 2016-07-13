@@ -7,7 +7,6 @@ import config from 'config'
 // import classes from 'classnames'
 import Title from 'components/Title'
 import Item from './Item'
-import './index.sass'
 
 @connect({
   me: 'me',

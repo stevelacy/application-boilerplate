@@ -4,7 +4,6 @@ import actions from 'core/actions'
 import classes from 'classnames'
 import { Icon } from 'react-fa'
 import { Map } from 'immutable'
-import './index.sass'
 
 export default class UserItem extends Component {
   static displayName = 'UserItem'
@@ -25,9 +24,7 @@ export default class UserItem extends Component {
   }
 
   componentWillReceiveProps ({ item }) {
-    if (this.state.item.get('active')) {
-      item = item.set('active', true)
-    }
+    if (this.state.item.get('active')) item = item.set('active', true)
     this.setState({ item })
   }
 
@@ -55,6 +52,13 @@ export default class UserItem extends Component {
     }
   }
 
+  toggleActiveItem () {
+    let { item } = this.state
+    this.setState({item: item.set('active', !this.state.item.get('active'))}, () =>
+      this.props.toggleActiveItem(item)
+    )
+  }
+
   handleInput (e) {
     let { item } = this.state
     let obj = {
@@ -79,7 +83,7 @@ export default class UserItem extends Component {
         }}
         className='list-item'>
         <button
-          onClick={() => this.props.toggleActiveItem(item)}
+          onClick={() => this.toggleActiveItem()}
           className='button row blue narrow'>
           <Icon name='expand' />
           </button>
