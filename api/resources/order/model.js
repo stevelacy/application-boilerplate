@@ -35,7 +35,7 @@ palisade(Model, {
     read: [ 'admin', isOwner ],
     list: [ 'admin', 'loggedIn' ],
     create: [ 'admin', 'loggedIn' ],
-    update: [ 'admin', isOwner],
+    update: [ 'admin', 'loggedIn' ],
     replace: [ 'admin' ],
     delete: [ 'admin' ]
   },
