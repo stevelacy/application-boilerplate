@@ -1,4 +1,5 @@
 @import 'client/styles/colors'
+@import 'client/styles/mixins'
 @import './itemlist.sass'
 
 .admin-view
@@ -21,3 +22,34 @@
       width: 100%
       background: $lightgrey
       margin: 5px 0
+
+  .item-list
+    .list-item
+      display: flex
+      flex: 1
+      transition: all .2s
+      overflow: hidden
+      &:nth-child(odd)
+        background: rgba($lightgrey, .3)
+      .input
+        +input($background: $transparent)
+      .row
+        flex: 1
+        display: inline-block
+        height: 40px
+        border-right: 1px solid $lightgrey
+        border-bottom: 1px solid $lightgrey
+        &.narrow
+          flex: 0
+        &.header
+          padding: 10px
+          background: $lightgrey
+          font-weight: bold
+          text-transform: uppercase
+        .button
+          +button()
+          &.green
+            background: $green
+          &.red
+            background: $red
+

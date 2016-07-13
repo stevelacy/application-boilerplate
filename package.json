@@ -45,7 +45,7 @@
     "express-session": "^1.13.0",
     "lodash.map": "^4.2.1",
     "method-override": "^2.3.5",
-    "moment": "^2.13.0",
+    "moment": "^2.14.1",
     "palisade": "^1.0.1",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
