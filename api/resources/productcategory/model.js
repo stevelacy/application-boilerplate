@@ -11,6 +11,7 @@ const Model = rethink.createModel('ProductCategory', {
   created: type.date().default(Date.now).required(),
   name: type.string(),
   description: type.string(),
+  gender: type.string(),
   category: type.string(),
   sizes: type.array().default(['XS', 'S', 'M', 'L', 'XL', 'XXL'])
 })
@@ -33,14 +34,16 @@ palisade(Model, {
   read: {
     id: [ 'public' ],
     name: [ 'pubic' ],
+    gender: [ 'pubic' ],
     description: [ 'public' ],
     category: [ 'public' ],
     lastModified: [ 'admin' ],
   },
   write: {
-    name: [ 'pubic' ],
-    description: [ 'public' ],
-    category: [ 'public' ],
+    name: [ 'admin' ],
+    description: [ 'admin' ],
+    gender: [ 'admin' ],
+    category: [ 'admin' ],
     lastModified: [ 'admin' ]
   }
 })
