@@ -71,7 +71,7 @@ export default class AdminOrdersComponent extends DataComponent {
       <div className='hr' />
       <div className='list-item'>
         <div className='row header narrow'> expand </div>
-        <div className='row header'> name </div>
+        <div className='row header'> user's name </div>
         <div className='row header'> phone </div>
         <div className='row header'> date </div>
         <div className='row header narrow'> save </div>

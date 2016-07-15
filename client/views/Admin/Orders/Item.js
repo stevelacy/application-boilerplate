@@ -88,7 +88,9 @@ export default class ProductItem extends Component {
           className='button row blue narrow'>
           <Icon name='expand' />
           </button>
-        <div className='row input'>
+        <div
+          onClick={() => this.toggleActiveItem()}
+          className='row input'>
           {`${item.getIn(['user', 'first'])} ${item.getIn(['user', 'last'])}`}
         </div>
         <div className='row input'>

@@ -1,8 +1,35 @@
 @import 'client/styles/colors'
 
+
 .item-list
-  width: 100%
-  .item
-    padding: 5px
+  .list-item
+    display: flex
+    flex: 1
+    transition: all .2s
+    overflow: hidden
+    background: $lightestgrey
     &:nth-child(odd)
-      background: rgba($lightestgrey, .8)
+      background: rgba($lightgrey, .3)
+    .input
+      +input($background: $white)
+    .row
+      flex: 1
+      display: inline-block
+      height: 40px
+      border-right: 1px solid $lightgrey
+      border-bottom: 1px solid $lightgrey
+      &.narrow
+        flex: 0
+      &.header
+        padding: 10px
+        background: $lightgrey
+        font-weight: bold
+        text-transform: uppercase
+      &.button, .button
+        +button()
+        &.green
+          background: $green
+        &.red
+          background: $red
+
+
