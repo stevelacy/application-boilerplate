@@ -8,7 +8,7 @@ import { order } from '../../../mocks/orders'
 import User from '../../../../api/resources/user/model'
 import Product from '../../../../api/resources/product/model'
 
-describe.only('order:updateById', function () {
+describe('order:updateById', function () {
   let userInstance = test.agent(api)
   let adminInstance = test.agent(api)
   let mockOrder1 = {
