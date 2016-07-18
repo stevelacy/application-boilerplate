@@ -11,7 +11,7 @@ import ProductSource from '../../../../api/resources/productsource/model'
 import ProductCategory from '../../../../api/resources/productcategory/model'
 
 
-describe('productsource:create', function () {
+describe.only('productsource:create', function () {
   let userInstance = test.agent(api)
   let adminInstance = test.agent(api)
   const opts = {
@@ -24,6 +24,7 @@ describe('productsource:create', function () {
         .insert(new ProductCategory(mockCategory))
         .execute((err, res) => {
           mockProduct.categoryId = mockCategory.id
+          mockProduct.gender = 'male'
           ProductSource
             .insert(new ProductSource(mockProduct))
             .execute((err, res) => {
@@ -84,6 +85,7 @@ describe('productsource:create', function () {
         image: 'wat.jpg',
         description: 'product',
         sizes: ['W', 'A', 'T'],
+        gender: 'female',
         categoryId: mockCategory.id
       })
       .expect(201)

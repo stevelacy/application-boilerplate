@@ -13,9 +13,9 @@ const Model = rethink.createModel('ProductSource', {
   name: type.string(),
   gender: type.string(),
   image: type.string(),
-  activity: type.string(),
   description: type.string(),
-  sku: type.string()
+  sku: type.string(),
+  enabled: type.boolean()
 })
 
 Model.ensureIndex('created')
@@ -49,7 +49,11 @@ palisade(Model, {
     status: [ 'admin' ],
     sku: [ 'admin' ],
     uid: [ 'admin' ],
-    image: [ 'admin' ]
+    image: [ 'admin' ],
+    gender: [ 'admin' ],
+    description: [ 'admin' ],
+    name: [ 'admin' ],
+    enabled: [ 'admin' ]
   }
 })
 
