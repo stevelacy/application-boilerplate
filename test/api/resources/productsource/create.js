@@ -11,7 +11,7 @@ import ProductSource from '../../../../api/resources/productsource/model'
 import ProductCategory from '../../../../api/resources/productcategory/model'
 
 
-describe.only('productsource:create', function () {
+describe('productsource:create', function () {
   let userInstance = test.agent(api)
   let adminInstance = test.agent(api)
   const opts = {
