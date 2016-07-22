@@ -36,7 +36,7 @@ palisade(Model, {
   },
   read: {
     id: [ 'public' ],
-    name: [ 'pubic' ],
+    name: [ 'public' ],
     gender: [ 'public' ],
     image: [ 'public' ],
     activity: [ 'public' ],
@@ -52,8 +52,7 @@ palisade(Model, {
     image: [ 'admin' ],
     gender: [ 'admin' ],
     description: [ 'admin' ],
-    name: [ 'admin' ],
-    enabled: [ 'admin' ]
+    name: [ 'admin' ], enabled: [ 'admin' ]
   }
 })
 
