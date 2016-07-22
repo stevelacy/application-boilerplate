@@ -22,11 +22,11 @@ export default class AdminProductsComponent extends DataComponent {
   }
 
   static defaultState = {
-    containerHeight: window.innerHeight
+    containerHeight: window.innerHeight - 200
   }
 
   static defaultProps = {
-    elementHeight: 100
+    elementHeight: 50
   }
 
   resolveData () {
@@ -52,14 +52,14 @@ export default class AdminProductsComponent extends DataComponent {
         infiniteLoadBeginEdgeOffset={250}
         elementHeight={this.props.elementHeight}>
         {
-          this.props.products.map((order) => {
+          this.props.products.map((item) => {
             return (
               <div
                 style={{ height: this.props.elementHeight }}
-                key={order.get('id')}
+                key={item.get('id')}
                 className='list-item'>
-                <img className='image' src={order.get('image')} />
-                {order.get('id')}
+                <img className='image' src={item.get('image')} />
+                {item.get('name')}
               </div>
             )
           })

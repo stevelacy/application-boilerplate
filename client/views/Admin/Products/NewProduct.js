@@ -34,6 +34,7 @@ export default class AdminNewProduct extends Component {
   }
 
   render () {
+    if (!this.props.productcategories) return null
     return (
       <div className='new-product'>
         <input
@@ -91,9 +92,9 @@ export default class AdminNewProduct extends Component {
           <option value='male/female'> both </option>
         </select>
         <button
-          className='button green'
+          className='button green uppercase'
           onClick={this.handleSave}>
-          SAVE
+          create
           </button>
       </div>
     )
